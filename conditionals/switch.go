@@ -13,4 +13,18 @@ func main() {
 		fmt.Println("You broke the matrix")
 
 	}
+
+	swtichTest()
+
+}
+
+func swtichTest() {
+	i := 0
+
+	switch {
+	case i < 1:
+		fmt.Println("Hey i printed one")
+	case i > 2:
+		fmt.Println("And i am 2")
+	}
 }
