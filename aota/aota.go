@@ -5,7 +5,8 @@ import (
 )
 
 const (
-	a = iota
+	a    = iota
+	name = "alex"
 	b
 	c
 )
