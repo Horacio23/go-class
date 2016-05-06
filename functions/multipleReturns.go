@@ -20,9 +20,10 @@ func unnamed() (string, string) {
 }
 
 func named() (greeting string, name string) {
-	// When using named return statements, only the return keyword needs to be used
+	// this variables are already declared in the return, which is why we dont use  the := OP
 	greeting = "hello"
 	name = "Stranger"
 
+	// When using named return statements, only the return keyword needs to be used
 	return
 }
