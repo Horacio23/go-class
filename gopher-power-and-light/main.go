@@ -29,6 +29,6 @@ func main() {
 		fmt.Printf("%-20s%.0f\n", "Load ", gridLoad)
 		fmt.Printf("%-20s%.1f%%\n", "Utilization: ", gridLoad/capacity*100)
 	default:
-		fmt.Println("Invalid input")
+		fmt.Println("Invalid input, please try again")
 	}
 }
