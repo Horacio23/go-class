@@ -22,7 +22,7 @@ func main() {
 		case "1":
 			grid.generatePlantReport()
 		case "2":
-			//TODO
+			grid.generateGridReport()
 		default:
 			fmt.Println("Invalid input, please try again")
 		}
@@ -90,6 +90,7 @@ func (pg *PowerGrid) generateGridReport() {
 	}
 
 	label := "Power Grid Report"
+	fmt.Println(label)
 	fmt.Println(strings.Repeat("-", len(label)))
 	fmt.Printf("%-20s%.0f\n", "Capacity: ", capacity)
 	fmt.Printf("%-20s%.0f\n", "Load ", pg.load)
