@@ -7,23 +7,25 @@ func main() {
 	var option int
 	fmt.Println("Please enter a mumber to search")
 	fmt.Scanln(&option)
-	fmt.Println(binarySearch(array, option))
+	binarySearch(array, option)
 }
 
-func binarySearch(array []int, num int) (answer int) {
+func binarySearch(array []int, num int) {
 	mid := len(array) / 2
 	if len(array) <= 1 {
-		answer = array[0]
-		fmt.Println("The answer is ", answer)
+		if array[0] == num {
+			fmt.Println("We found the number", num)
+		} else {
+			fmt.Println("We did not find the number")
+		}
 		return
 	}
 	if array[mid] > num {
 		fmt.Println("Array when less", array)
-		answer = binarySearch(array[:mid], num)
+		binarySearch(array[:mid], num)
 	} else {
 		fmt.Println("Array when more", array)
-		answer = binarySearch(array[mid:], num)
+		binarySearch(array[mid:], num)
 	}
 
-	return
 }
