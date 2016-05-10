@@ -6,7 +6,10 @@ import (
 
 func main() {
 	array := []int{2, 5, 3, 2, 1, 5, 32}
-	linearSearch(array, 4)
+	var option int
+	fmt.Println("Please enter a mumber to search")
+	fmt.Scanln(&option)
+	linearSearch(array, option)
 }
 
 func linearSearch(array []int, num int) {
