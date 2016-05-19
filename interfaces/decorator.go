@@ -19,6 +19,7 @@ func Logging(log string) Decorator {
 	return func(c Client) Client {
 		//This is the client that gets returned by calling the Decorator func
 		// It gets executed by calling Draw on the Client, since Draw just calls the func itself
+		// Also, the func needs to be casted to ClientFunc so that it can be considereded a Client
 		return ClientFunc(func(s string) string {
 			fmt.Println("He the log is: ", log)
 			return c.Draw(s)
