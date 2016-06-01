@@ -20,8 +20,15 @@ func main() {
 	msgCh <- msg
 	errCh <- failedMessage
 
-	fmt.Println(<-msgCh)
-	fmt.Println(<-errCh)
+	// The first message to be true will be executed
+	// so the channels with higher priority should be eveluated first
+	select {
+	case receivedMsg := <-msgCh:
+		fmt.Println(receivedMsg)
+	case receivedError := <-errCh:
+		fmt.Println(receivedError)
+	}
+
 }
 
 type Message struct {
