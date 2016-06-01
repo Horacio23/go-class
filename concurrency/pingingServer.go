@@ -5,17 +5,39 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"time"
 )
 
 func main() {
-	resp, _ := http.Get("http://dev.markitondemand.com/MODApis/Api/v2/Quote?symbol=googl")
-	defer resp.Body.Close()
-	body, _ := ioutil.ReadAll(resp.Body)
 
-	quote := new(QuoteResponse)
-	xml.Unmarshal(body, &quote)
+	start := time.Now()
 
-	fmt.Printf("%s: %.2f", quote.Name, quote.LastPrice)
+	stockSymbols := []string{
+		"googl",
+		"msft",
+		"aapl",
+		"bbry",
+		"hpq",
+		"vz",
+		"t",
+		"tmus",
+		"s",
+	}
+
+	for _, symbol := range stockSymbols {
+		resp, _ := http.Get("http://dev.markitondemand.com/MODApis/Api/v2/Quote?symbol=" + symbol)
+		defer resp.Body.Close()
+		body, _ := ioutil.ReadAll(resp.Body)
+
+		quote := new(QuoteResponse)
+		xml.Unmarshal(body, &quote)
+
+		fmt.Printf("%s: %.2f\n", quote.Name, quote.LastPrice)
+	}
+
+	elapsed := time.Since(start)
+
+	fmt.Printf("Execution time: %s", elapsed)
 }
 
 type QuoteResponse struct {
