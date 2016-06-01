@@ -16,7 +16,13 @@ func main() {
 		ch <- word
 	}
 
-	for i := 0; i < len(words); i++ {
-		fmt.Println(<-ch + " ")
+	close(ch)
+
+	for {
+		if msg, ok := <-ch; ok {
+			fmt.Println(msg + " ")
+		} else {
+			break
+		}
 	}
 }
