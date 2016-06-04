@@ -13,16 +13,17 @@ func main() {
 	btn.AddEventListener("click", handlerOne)
 	btn.AddEventListener("click", handlerTwo)
 
+	// These two run forever trying to get something out of the channel
 	go func() {
-		for {
-			msg := <-handlerOne
+		for msg := range handlerOne {
+
 			fmt.Println("Handler One:", msg)
 		}
 	}()
 
 	go func() {
-		for {
-			msg := <-handlerTwo
+		for msg := range handlerTwo {
+
 			fmt.Println("Handler Two:", msg)
 		}
 	}()
@@ -64,6 +65,7 @@ func (this *Button) RemoveEventListener(event string, listenerChannel chan strin
 	}
 }
 
+//Gets called to fill the channel with an event
 func (this *Button) TriggerEvent(event string, response string) {
 	if _, present := this.eventListeners[event]; present {
 		for _, handler := range this.eventListeners[event] {
