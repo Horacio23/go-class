@@ -32,6 +32,8 @@ func main() {
 	btn.RemoveEventListener("click", handlerTwo)
 	btn.TriggerEvent("click", "Button clicked again")
 
+	close(handlerTwo)
+
 	fmt.Scanln()
 }
 
