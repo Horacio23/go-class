@@ -16,8 +16,12 @@ func main() {
 		return nil
 	}, func(err error) {
 		fmt.Printf("Failed to save Purchase Order: " + err.Error() + "\n")
+	}).Then(func(obj interface{}) error {
+		fmt.Println("All went well")
+		return nil
+	}, func(err error) {
+		fmt.Println("Everything did not go well:", err.Error())
 	})
-
 	fmt.Scanln()
 }
 
